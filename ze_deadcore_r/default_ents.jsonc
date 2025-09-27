@@ -111,26 +111,6 @@
 				]
 			}
 		},
-        // Stage B fix mini game end after still spawn npc
-        {
-            "match":
-            {
-                "targetname": "[PR#]b_boss_counter1"
-            },
-            "insert":
-            {
-                "io":
-                [					
-					{
-                        "outputname": "OnHitMin",
-						"targetname": "enemy4_temp1",
-                        "inputname": "Kill",
-                        "delay": 0.0,
-                        "timestofire": -1
-                    }
-				]
-			}
-		},
         // Stage D fix last prop down stuck issue
         {
             "match":
@@ -842,6 +822,14 @@
 						"targetname": "post_b_escape",
                         "inputname": "FireUser1",                       
                         "delay": 77.0,
+                        "timestofire": -1
+                    },
+                    // fix mini game end after still spawn npc
+                    {
+                        "outputname": "OnHitMin",
+						"targetname": "enemy4_temp1",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
                         "timestofire": -1
                     }
 				]
