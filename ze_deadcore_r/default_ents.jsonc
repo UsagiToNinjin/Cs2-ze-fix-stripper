@@ -1,0 +1,1189 @@
+// stripper by 兎RB 25.09.27
+// map ze_deadcore_r
+// workshop id 3331345627
+// this is a temporary fix stripper. next vpk update after delete this stipper
+
+{
+    "filter":  
+    [
+        // remove all lyric related entities due to a server lagging issue	
+        {
+            "targetname": "[PR#]script"
+		},
+
+		{
+            "classname": "logic_relay",
+            "hammeruniqueid": "25882"
+		},
+
+        {
+            "targetname": "[PR#]lyric_relay"
+		},
+
+        {
+            "targetname": "[PR#]lyric_hud"
+		},
+        // remove random set human hp
+        {
+            "targetname": "[PR#]d_ex_hp_filter_radnom_case"
+		},
+
+        {
+            "targetname": "[PR#]d_ex_hp_radnom_trigger"
+		}
+	],
+    "modify": 
+    [
+        // stripper update log
+        {
+            "match":
+            {
+                "classname": "logic_auto"
+            },
+            "insert":
+            {
+                "io":
+                [					
+					{
+                        "outputname": "OnMapSpawn",
+						"targetname": "server",
+                        "inputname": "Command",
+                        "overrideparam": "say fix stripper update 25.09.27",
+                        "delay": 8.0,
+                        "timestofire": -1
+                    },
+                    // more fastly on effect
+                    {
+						"outputname": "OnMapSpawn",
+						"targetname": "post_normal",
+						"inputname": "FireUser1",
+						"delay": 1.0,
+						"timestofire": -1
+					}
+				]
+			}
+		},
+        // remove unnecessary output
+        {
+            "match":
+            {
+                "targetname": "[PR#]red_music_case"
+            },
+            "delete":
+            {
+                "io":
+                [					
+					{
+                        "outputname": "OnCase02",
+						"targetname": "[PR#]script",
+                        "inputname": "FireUser1",
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnCase03",
+						"targetname": "[PR#]script",
+                        "inputname": "FireUser1",
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]d_red_relay"
+            },
+            "delete":
+            {
+                "io":
+                [					
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]d_ex_hp_radnom_trigger",
+                        "inputname": "Enable",
+                        "delay": 30.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+        // Stage B fix mini game end after still spawn npc
+        {
+            "match":
+            {
+                "targetname": "[PR#]b_boss_counter1"
+            },
+            "insert":
+            {
+                "io":
+                [					
+					{
+                        "outputname": "OnHitMin",
+						"targetname": "enemy4_temp1",
+                        "inputname": "Kill",
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+        // Stage D fix last prop down stuck issue
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_temp1"
+            },		
+			"replace":
+            {
+                "template03": "escape_press1_hurt1"
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_temp2"
+            },		
+			"replace":
+            {
+                "template03": "escape_press1_hurt2"
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_temp3"
+            },		
+			"replace":
+            {
+                "template03": "escape_press1_hurt3"
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_temp4"
+            },		
+			"replace":
+            {
+                "template03": "escape_press1_hurt4"
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_temp5"
+            },		
+			"replace":
+            {
+                "template03": "escape_press1_hurt5"
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_temp6"
+            },		
+			"replace":
+            {
+                "template03": "escape_press1_hurt6"
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press_relay"
+            },		
+			"insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnTrigger",
+						"targetname": "NadeTimer",
+                        "inputname": "Enable",                       
+                        "delay": 10.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "escape_press1_hurt*",
+                        "inputname": "SetParent",
+						"overrideparam": "escape_press1_core1",                   
+                        "delay": 0.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "escape_press1_hurt*",
+                        "inputname": "Enable",                       
+                        "delay": 10.5,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]escape_press_relay2"
+            },
+			"insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnTrigger",
+						"targetname": "NadeTimer",
+                        "inputname": "Enable",                       
+                        "delay": 9.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "escape_press1_hurt*",
+                        "inputname": "Enable",                       
+                        "delay": 9.6,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]NadeTimer"
+            },
+			"insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnTimer",
+						"targetname": "weapon_decoy",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "weapon_flashbang",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "weapon_hegrenade",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "weapon_incgrenade",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "weapon_molotov",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "weapon_smokegrenade",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "weapon_tagrenade",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "flashbang_projectile",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "hegrenade_projectile",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "molotov_projectile",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "smokegrenade_projectile",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "decoy_projectile",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTimer",
+						"targetname": "tagrenade_projectile",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+        // fix post_processing_volume
+        {
+            "match":
+            {
+                "targetname": "[PR#]post_normal2"
+            },
+			"replace":
+			{
+				"startdisabled": "1"
+			}
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]post_normal"
+            },
+			"replace":
+			{
+				"fadetime": "1"
+			}
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_stage_red_d"
+            },
+			"delete":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "FireUser1",                       
+                        "delay": 10.0,
+                        "timestofire": -1
+                    }
+				]
+			},		
+			"insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_purple"
+            },
+			"delete":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "FireUser1",                       
+                        "delay": 10.0,
+                        "timestofire": -1
+                    }
+				]
+			},
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_red"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_orange"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_yellow"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_green"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_blue"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_b_escape"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]post_white"
+            },		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnUser1",
+						"targetname": "post*",
+                        "inputname": "Disable",                       
+                        "delay": 0.1,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnUser1",
+						"targetname": "!self",
+                        "inputname": "Enable",                       
+                        "delay": 0.2,
+                        "timestofire": -1
+                    }
+				]
+			}		
+        },	
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]b_boss_counter1"
+            },
+			"delete":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnHitMin",
+						"targetname": "[PR#]post_b_escape",
+                        "inputname": "Enable",                       
+                        "delay": 77.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnHitMin",
+						"targetname": "[PR#]post_normal",
+                        "inputname": "Kill",                       
+                        "delay": 77.0,
+                        "timestofire": -1
+                    }
+				]
+			},		
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnHitMin",
+						"targetname": "post_b_escape",
+                        "inputname": "FireUser1",                       
+                        "delay": 77.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},			
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]c_escape_cc_case"
+            },		
+			"delete":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnCase01",
+						"targetname": "[PR#]post_red",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase02",
+						"targetname": "[PR#]post_orange",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase03",
+						"targetname": "[PR#]post_yellow",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase04",
+						"targetname": "[PR#]post_green",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase05",
+						"targetname": "[PR#]post_blue",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase06",
+						"targetname": "[PR#]post_purple",
+                        "inputname": "Enable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+				]
+			},
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnCase01",
+						"targetname": "post_red",
+                        "inputname": "FireUser1",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase02",
+						"targetname": "post_orange",
+                        "inputname": "FireUser1",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase03",
+						"targetname": "post_yellow",
+                        "inputname": "FireUser1",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase04",
+						"targetname": "post_green",
+                        "inputname": "FireUser1",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase05",
+						"targetname": "post_blue",
+                        "inputname": "FireUser1",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnCase06",
+						"targetname": "post_purple",
+                        "inputname": "FireUser1",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+		
+		{
+            "match":
+            {
+                "targetname": "[PR#]escape_white_relay"
+            },		
+			"delete":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_red",
+                        "inputname": "Enable",                       
+                        "delay": 46.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_red",
+                        "inputname": "Disable",                       
+                        "delay": 56.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_orange",
+                        "inputname": "Enable",                       
+                        "delay": 55.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_orange",
+                        "inputname": "Disable",                       
+                        "delay": 62.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_yellow",
+                        "inputname": "Enable",                       
+                        "delay": 62.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_yellow",
+                        "inputname": "Disable",                       
+                        "delay": 73.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_green",
+                        "inputname": "Enable",                       
+                        "delay": 73.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_green",
+                        "inputname": "Disable",                       
+                        "delay": 80.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_blue",
+                        "inputname": "Enable",                       
+                        "delay": 80.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_blue",
+                        "inputname": "Disable",                       
+                        "delay": 84.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_purple",
+                        "inputname": "Enable",                       
+                        "delay": 84.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_purple",
+                        "inputname": "Disable",                       
+                        "delay": 97.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "[PR#]post_white",
+                        "inputname": "Enable",                       
+                        "delay": 97.0,
+                        "timestofire": -1
+                    }
+				]
+			},
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_red",
+                        "inputname": "FireUser1",                       
+                        "delay": 46.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_red",
+                        "inputname": "Kill",                       
+                        "delay": 56.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_orange",
+                        "inputname": "FireUser1",                       
+                        "delay": 55.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_orange",
+                        "inputname": "Kill",                       
+                        "delay": 62.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_yellow",
+                        "inputname": "FireUser1",                       
+                        "delay": 62.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_yellow",
+                        "inputname": "Kill",                       
+                        "delay": 73.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_green",
+                        "inputname": "FireUser1",                       
+                        "delay": 73.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_green",
+                        "inputname": "Kill",                       
+                        "delay": 80.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_blue",
+                        "inputname": "FireUser1",                       
+                        "delay": 80.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_blue",
+                        "inputname": "Kill",                       
+                        "delay": 87.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_purple",
+                        "inputname": "FireUser1",                       
+                        "delay": 87.5,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_purple",
+                        "inputname": "Kill",                       
+                        "delay": 95.0,
+                        "timestofire": -1
+                    },
+
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "post_white",
+                        "inputname": "FireUser1",                       
+                        "delay": 97.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		}
+    ]
+}        
