@@ -1,0 +1,40 @@
+// stripper by 兎RB 25.11.29
+// map ze_deadcore_r
+// workshop id 3331345627
+{
+    "modify": // fix delay
+    [
+        {
+            "match":
+            {
+                "targetname": "[PR#]gametext_hud_20s"
+            },
+            "delete": 
+            {
+                "io":
+                [					
+					{
+                        "outputname": "OnUser2",
+						"targetname": "!self",
+                        "inputname": "Kill",
+                        "delay": 19.98,
+                        "timestofire": -1
+                    }
+                ]
+            },
+            "insert": 
+            {
+                "io":
+                [					
+					{
+                        "outputname": "OnUser2",
+						"targetname": "!self",
+                        "inputname": "Kill",
+                        "delay": 20.08,
+                        "timestofire": -1
+                    }
+                ]
+            }        
+		}
+	]       
+}	
