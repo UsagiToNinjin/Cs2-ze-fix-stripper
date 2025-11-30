@@ -1,12 +1,10 @@
-// stripper by 兎RB 25.09.27
+// stripper by 兎RB 25.11.30
 // map ze_deadcore_r
 // workshop id 3331345627
-// this is a temporary fix stripper. next vpk update after delete this stipper
-
 {
     "filter":  
     [
-        // remove all lyric related entities due to a server lagging issue	
+        // remove all lyric entities	
         {
             "targetname": "[PR#]script"
 		},
@@ -34,7 +32,6 @@
 	],
     "modify": 
     [
-        // stripper update log
         {
             "match":
             {
@@ -43,12 +40,13 @@
             "insert":
             {
                 "io":
-                [					
+                [	
+                    // stripper update log				
 					{
                         "outputname": "OnMapSpawn",
 						"targetname": "server",
                         "inputname": "Command",
-                        "overrideparam": "say fix stripper update 25.09.27",
+                        "overrideparam": "say fix stripper update 25.11.30",
                         "delay": 8.0,
                         "timestofire": -1
                     },
@@ -111,7 +109,7 @@
 				]
 			}
 		},
-        // Stage D fix last prop down stuck issue
+        // Stage D fix fall prop stuck issue
         {
             "match":
             {
@@ -252,62 +250,6 @@
             {
                 "io":
                 [
-                    {
-                        "outputname": "OnTimer",
-						"targetname": "weapon_decoy",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
-					{
-                        "outputname": "OnTimer",
-						"targetname": "weapon_flashbang",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
-					{
-                        "outputname": "OnTimer",
-						"targetname": "weapon_hegrenade",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
-					{
-                        "outputname": "OnTimer",
-						"targetname": "weapon_incgrenade",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
-					{
-                        "outputname": "OnTimer",
-						"targetname": "weapon_molotov",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
-					{
-                        "outputname": "OnTimer",
-						"targetname": "weapon_smokegrenade",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
-					{
-                        "outputname": "OnTimer",
-						"targetname": "weapon_tagrenade",
-                        "inputname": "Kill",                       
-                        "delay": 0.0,
-                        "timestofire": -1
-                    },
-
 					{
                         "outputname": "OnTimer",
 						"targetname": "flashbang_projectile",
@@ -358,6 +300,106 @@
 				]
 			}
 		},
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_relay"
+            },
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "NadeTimer",
+                        "inputname": "Disable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        },
+        
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_red_relay"
+            },
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "NadeTimer",
+                        "inputname": "Disable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_purple_relay"
+            },
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnTrigger",
+						"targetname": "NadeTimer",
+                        "inputname": "Disable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_core1"
+            },
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnFullyClosed",
+						"targetname": "NadeTimer",
+                        "inputname": "Disable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        },
+
+        {
+            "match":
+            {
+                "targetname": "[PR#]escape_press1_core2"
+            },
+			"insert":
+            {
+                "io":
+                [
+					{
+                        "outputname": "OnFullyClosed",
+						"targetname": "NadeTimer",
+                        "inputname": "Disable",                       
+                        "delay": 0.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        },
         // fix post_processing_volume
         {
             "match":
@@ -824,6 +866,22 @@
                         "delay": 77.0,
                         "timestofire": -1
                     },
+
+                    {
+                        "outputname": "OnHitMin",
+						"targetname": "NadeTimer",
+                        "inputname": "Enable",                       
+                        "delay": 77.0,
+                        "timestofire": -1
+                    },
+
+                    {
+                        "outputname": "OnHitMin",
+						"targetname": "NadeTimer",
+                        "inputname": "Disable",                       
+                        "delay": 111.0,
+                        "timestofire": -1
+                    },
                     // fix mini game end after still spawn npc
                     {
                         "outputname": "OnHitMin",
@@ -1172,6 +1230,6 @@
                     }
 				]
 			}
-		}
-    ]
-}        
+		}        
+    ]    
+}
