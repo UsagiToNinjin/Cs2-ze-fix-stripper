@@ -1,0 +1,81 @@
+// stripper by 兎RB 25.12.02
+// map ze_arknights_initium
+// workshop id 3330894823
+{
+    "modify": // stripper update log
+    [
+        {
+            "match":
+            {
+                "classname": "logic_auto",
+				"hammeruniqueid": "6902"
+            },
+            "insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnMapSpawn",
+						"targetname": "cmd",
+                        "inputname": "Command",
+                        "overrideparam": "say fix stripper update 25.12.02",
+                        "delay": 1.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        }
+    ],
+    "add": // penetration prop bug scales value issue, add prop more
+    [
+		{
+            "targetname": "lv2 indoor7",
+            "classname": "prop_dynamic",
+            "origin": "13012 4384 2699",
+            "angles": "0 270 0",
+			"scales": "1 1 1",
+			"solid": "6",
+			"startdisabled": "0",
+			"breakablecontentstype": "BC_DEFAULT",
+			"modelscale": "1",
+			"minanimtime": "5",
+			"maxanimtime": "10",
+			"fadescale": "1",
+			"clothscale": "1",
+			"idleanimationloopmode": "ANIM_LOOP_MODE_NOT_LOOPING",
+			"startinganimationloopmode": "ANIM_LOOP_MODE_NOT_LOOPING",
+			"use_animgraph": "1",
+			"glowteam": "-1",
+			"fademindist": "-1",
+			"rendercolor": "255 255 255",
+			"renderamt": "0",
+			"burstscale": "100",
+			"model":"models/cs_italy/doors/italy_wood_door_2.vmdl"
+        },
+
+		{
+            "targetname": "lv2 indoor7",
+            "classname": "prop_dynamic",
+            "origin": "13012 4391 2699",
+            "angles": "0 90 0",
+			"scales": "1 1 1",
+			"solid": "6",
+			"startdisabled": "0",
+			"breakablecontentstype": "BC_DEFAULT",
+			"modelscale": "1",
+			"minanimtime": "5",
+			"maxanimtime": "10",
+			"fadescale": "1",
+			"clothscale": "1",
+			"idleanimationloopmode": "ANIM_LOOP_MODE_NOT_LOOPING",
+			"startinganimationloopmode": "ANIM_LOOP_MODE_NOT_LOOPING",
+			"use_animgraph": "1",
+			"glowteam": "-1",
+			"fademindist": "-1",
+			"rendercolor": "255 255 255",
+			"renderamt": "0",
+			"burstscale": "100",
+			"model":"models/cs_italy/doors/italy_wood_door_2.vmdl"
+        }
+    ]
+}
