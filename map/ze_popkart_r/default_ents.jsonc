@@ -1,0 +1,170 @@
+// stripper by 兎RB 25.12.02
+// map ze_popkart_r
+// workshop id 3247766438
+{
+    "modify": // stripper update log
+    [
+        {
+            "match":
+            {
+                "classname": "logic_auto"
+			},	
+            "insert":
+            {
+                "io":
+                [
+                    
+                    {
+                        "outputname": "OnMapSpawn",
+						"targetname": "cmd",
+                        "inputname": "Command",
+                        "overrideparam": "say fix stripper update 25.12.02",
+                        "delay": 1.0,
+                        "timestofire": -1
+                    }
+                ]
+            }
+        }
+    ],
+    "add": // kart(prop) can get nade KB bug, disable nade 
+    [
+		{
+			"targetname": "disable_nade",
+            "classname": "logic_timer",
+            "startdisabled": "1",
+            "refiretime": "0.01",
+            "io":
+			[
+				{
+                    "outputname": "OnTimer",
+					"targetname": "flashbang_projectile",
+                    "inputname": "Kill",                       
+                    "delay": 0.0,
+                    "timestofire": -1
+                },
+
+				{
+                    "outputname": "OnTimer",
+					"targetname": "hegrenade_projectile",
+                    "inputname": "Kill",                       
+                    "delay": 0.0,
+                    "timestofire": -1
+                },
+
+				{
+                    "outputname": "OnTimer",
+					"targetname": "molotov_projectile",
+                    "inputname": "Kill",                       
+                    "delay": 0.0,
+                    "timestofire": -1
+                },
+
+				{
+                    "outputname": "OnTimer",
+					"targetname": "smokegrenade_projectile",
+                    "inputname": "Kill",                       
+                    "delay": 0.0,
+                    "timestofire": -1
+                },
+
+				{
+                    "outputname": "OnTimer",
+					"targetname": "decoy_projectile",
+                    "inputname": "Kill",                       
+                    "delay": 0.0,
+                    "timestofire": -1
+                },
+
+				{
+                    "outputname": "OnTimer",
+					"targetname": "tagrenade_projectile",
+                    "inputname": "Kill",                       
+                    "delay": 0.0,
+                    "timestofire": -1
+                }
+			]
+		}	
+    ],
+    "modify": // add fix kart(prop) KB bug output
+    [
+        {
+            "match":
+            {
+                "targetname": "[PR#]lv4_kart_final_trigger"
+            },
+			"insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnStartTouch",
+						"targetname": "disable_nade",
+                        "inputname": "Disable",
+                        "delay": 30.0,
+                        "timestofire": -1
+                    }
+				]	
+            }
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]lv3_kart_final_trigger"
+            },
+            "insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnStartTouch",
+						"targetname": "disable_nade",
+                        "inputname": "Disable",
+                        "delay": 30.0,
+                        "timestofire": -1
+                    }
+				]	
+            }
+        },
+		
+		{
+            "match":
+            {
+                "targetname": "[PR#]lv3_init_relay"
+            },
+            "insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnTrigger",
+						"targetname": "disable_nade",
+                        "inputname": "Enable",
+                        "delay": 40.0,
+                        "timestofire": -1
+                    }
+				]	
+            }
+        },
+
+		{
+            "match":
+            {
+                "targetname": "[PR#]lv4_init_relay"
+            },
+            "insert":
+            {
+                "io":
+                [
+                    {
+                        "outputname": "OnTrigger",
+						"targetname": "disable_nade",
+                        "inputname": "Enable",
+                        "delay": 40.0,
+                        "timestofire": -1
+                    }
+				]	
+            }
+        }
+    ]
+}
