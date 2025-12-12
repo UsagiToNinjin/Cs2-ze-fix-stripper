@@ -1,0 +1,49 @@
+// stripper by 兎RB 25.12.12
+// map ze_realm
+// workshop id 3480319693
+{
+	"modify": 
+    [
+        // stripper update log
+        {
+            "match":
+            {
+                "classname": "logic_auto"
+            },
+			"insert":
+            {
+                "io":
+                [
+					{                      
+                        "outputname": "OnMapSpawn",
+				        "targetname": "cmd",
+                        "inputname": "Command",
+                        "overrideparam": "say fix stripper update 25.12.12",
+                        "delay": 1.0,
+                        "timestofire": -1
+                    }
+				]
+			}
+		},
+        // Restrict player acceleration when teleporting, prevent boosting
+        {
+		    "match":
+            {
+                "targetname": "[PR#]final_teleport"
+            },
+            "insert": 
+            {
+                "io":
+                [	
+					{
+						"outputname": "OnStartTouch",
+						"targetname": "!activator",
+						"inputname": "KeyValue",
+						"overrideparam": "absvelocity 0 0 -500",
+						"delay": 0.0,
+						"timestofire": -1
+					}
+				]
+			}
+		}
+    ]
