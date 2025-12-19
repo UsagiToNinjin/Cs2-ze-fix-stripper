@@ -46,7 +46,7 @@
                         "outputname": "OnMapSpawn",
 						"targetname": "server",
                         "inputname": "Command",
-                        "overrideparam": "say fix stripper update 25.11.30",
+                        "overrideparam": "say fix stripper update 25.09.27",
                         "delay": 8.0,
                         "timestofire": -1
                     },
@@ -864,22 +864,6 @@
 						"targetname": "post_b_escape",
                         "inputname": "FireUser1",                       
                         "delay": 77.0,
-                        "timestofire": -1
-                    },
-
-                    {
-                        "outputname": "OnHitMin",
-						"targetname": "NadeTimer",
-                        "inputname": "Enable",                       
-                        "delay": 77.0,
-                        "timestofire": -1
-                    },
-
-                    {
-                        "outputname": "OnHitMin",
-						"targetname": "NadeTimer",
-                        "inputname": "Disable",                       
-                        "delay": 111.0,
                         "timestofire": -1
                     },
                     // fix mini game end after still spawn npc
