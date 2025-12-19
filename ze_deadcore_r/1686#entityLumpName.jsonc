@@ -9,7 +9,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "-182.005005 1.000000 -708.000000",
 			"angles": "-89.999992 45.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -26,7 +26,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "180.014008 1.000000 -708.000000",
 			"angles": "-89.999992 45.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -43,7 +43,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "0.000000 1.000000 -592.000000",
 			"angles": "-89.999992 45.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -60,7 +60,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "0.000000 1.000000 0.000000",
 			"angles": "-89.999992 90.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -77,7 +77,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "0.009770 -180.000000 708.000000",
 			"angles": "-89.999992 135.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -94,7 +94,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "-0.010740 182.000000 708.000000",
 			"angles": "-89.999992 135.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -111,7 +111,7 @@
 			"classname": "trigger_hurt",
 		    "origin": "0.000000 1.000000 592.000000",
 			"angles": "-89.999992 45.000000 0.000000",
-			"scales": "0.98 0.98 0.98",
+			"scales": "1 1 1",
 			"parentname": "escape_press1_core2",
             "forgivedelay": "3",
             "damagemodel": "0",
@@ -123,4 +123,5 @@
             "model": "models/deadcock/circle2_1024.vmdl"
 		}
     ]    	
+
 }	
